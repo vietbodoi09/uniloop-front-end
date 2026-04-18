@@ -79,7 +79,7 @@ function LoginInner() {
                 <Label>University email</Label>
                 <Input
                   type="email"
-                  placeholder="you@ueb.edu.vn"
+                  placeholder="example@gmail.com"
                   {...pwForm.register("email")}
                 />
                 {pwForm.formState.errors.email && (
@@ -107,7 +107,7 @@ function LoginInner() {
                 <Label>University email</Label>
                 <Input
                   type="email"
-                  placeholder="you@ueb.edu.vn"
+                  placeholder="example@gmail.com"
                   {...mlForm.register("email")}
                 />
                 {mlForm.formState.errors.email && (

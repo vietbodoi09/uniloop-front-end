@@ -1,20 +1,10 @@
 import { z } from "zod";
 
-export const EDU_VN_REGEX =
-  /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.edu\.vn$/;
-
-export const isUniversityEmail = (email: string) =>
-  EDU_VN_REGEX.test(email.trim().toLowerCase());
+export const isUniversityEmail = (_email: string) => true; // allow all emails
 
 export const signupSchema = z
   .object({
-    email: z
-      .string()
-      .min(1, "Email is required")
-      .email("Invalid email")
-      .refine(isUniversityEmail, {
-        message: "Must be a Vietnamese university email (*.edu.vn)",
-      }),
+    email: z.string().min(1, "Email is required").email("Invalid email"),
     password: z.string().min(8, "Password must be ≥ 8 characters"),
     confirm: z.string(),
     fullName: z.string().min(2, "Full name is required"),
@@ -25,22 +15,12 @@ export const signupSchema = z
   });
 
 export const loginSchema = z.object({
-  email: z
-    .string()
-    .email()
-    .refine(isUniversityEmail, {
-      message: "Only *.edu.vn accounts are allowed",
-    }),
+  email: z.string().email("Invalid email"),
   password: z.string().min(1, "Password is required"),
 });
 
 export const magicLinkSchema = z.object({
-  email: z
-    .string()
-    .email()
-    .refine(isUniversityEmail, {
-      message: "Only *.edu.vn accounts are allowed",
-    }),
+  email: z.string().email("Invalid email"),
 });
 
 export type SignupInput = z.infer<typeof signupSchema>;

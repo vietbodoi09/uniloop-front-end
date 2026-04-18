@@ -65,7 +65,7 @@ export default function SignupPage() {
             <Input
               id="email"
               type="email"
-              placeholder="you@ueb.edu.vn"
+              placeholder="example@gmail.com"
               {...register("email")}
             />
             {errors.email && (

@@ -42,7 +42,7 @@ export default async function Home() {
           </Button>
         </div>
         <p className="text-xs text-slate-400">
-          Chỉ dành cho email <strong>*.edu.vn</strong>
+          Dành cho sinh viên UEB
         </p>
       </div>
     );

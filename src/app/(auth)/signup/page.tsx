@@ -42,8 +42,9 @@ export default function SignupPage() {
     setLoading(false);
 
     if (error) return toast.error(error.message);
-    toast.success("Check your university inbox to verify.");
-    router.push(`/verify?email=${encodeURIComponent(data.email)}`);
+    toast.success("Account created! Welcome to UniLoop.");
+    router.push("/");
+    router.refresh();
   };
 
   return (

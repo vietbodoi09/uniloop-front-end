@@ -3,7 +3,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Star } from "lucide-react";
 import { formatDistanceToNow } from "date-fns";
 
-export async function ReviewList({ sellerId }: { sellerId: string }) {
+export async function ReviewList({ productId }: { productId: string }) {
   const supabase = await createClient();
   const { data: reviews } = await supabase
     .from("reviews")
@@ -13,7 +13,7 @@ export async function ReviewList({ sellerId }: { sellerId: string }) {
       reviewer:profiles!reviews_reviewer_id_fkey(full_name, avatar_url)
     `
     )
-    .eq("seller_id", sellerId)
+    .eq("product_id", productId)
     .order("created_at", { ascending: false })
     .limit(20);
 

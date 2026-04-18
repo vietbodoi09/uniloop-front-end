@@ -146,9 +146,9 @@ export default async function ProductDetail({
 
       <section className="md:col-span-2 mt-8 space-y-6">
         <h2 className="text-xl font-semibold">
-          Reviews for {product.seller?.full_name}
+          Reviews
         </h2>
-        <ReviewList sellerId={product.seller_id} />
+        <ReviewList productId={product.id} />
         {canReview && (
           <ReviewForm productId={product.id} sellerId={product.seller_id} />
         )}

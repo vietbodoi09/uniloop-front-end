@@ -11,7 +11,41 @@ export async function deleteProduct(productId: string) {
     .from("products")
     .delete()
     .eq("id", productId)
-    .eq("seller_id", user.id); // only own products
+    .eq("seller_id", user.id);
+
+  if (error) return { error: error.message };
+  revalidatePath("/profile/me");
+  revalidatePath("/");
+  return { ok: true };
+}
+
+export async function markAsSold(productId: string) {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return { error: "Not authenticated" };
+
+  const { error } = await supabase
+    .from("products")
+    .update({ status: "sold" })
+    .eq("id", productId)
+    .eq("seller_id", user.id);
+
+  if (error) return { error: error.message };
+  revalidatePath("/profile/me");
+  revalidatePath("/");
+  return { ok: true };
+}
+
+export async function markAsActive(productId: string) {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return { error: "Not authenticated" };
+
+  const { error } = await supabase
+    .from("products")
+    .update({ status: "active" })
+    .eq("id", productId)
+    .eq("seller_id", user.id);
 
   if (error) return { error: error.message };
   revalidatePath("/profile/me");

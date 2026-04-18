@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
-import { ProductCard } from "@/components/products/ProductCard";
+import { MyProductCard } from "@/components/products/MyProductCard";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Star } from "lucide-react";
 
@@ -51,7 +51,7 @@ export default async function MyProfilePage() {
         </h2>
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
           {products?.map((p) => (
-            <ProductCard key={p.id} product={p as any} />
+            <MyProductCard key={p.id} product={p as any} />
           ))}
         </div>
       </section>

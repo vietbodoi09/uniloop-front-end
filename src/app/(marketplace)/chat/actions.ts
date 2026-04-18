@@ -65,6 +65,5 @@ export async function sendMessage(conversationId: string, content: string) {
     .update({ last_message_at: new Date().toISOString() })
     .eq("id", conversationId);
 
-  revalidatePath(`/chat/${conversationId}`);
   return { ok: true };
 }

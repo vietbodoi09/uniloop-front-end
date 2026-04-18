@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState, useTransition } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRealtimeChat, type ChatMessage } from "@/hooks/useRealtimeChat";
 import { sendMessage } from "@/app/(marketplace)/chat/actions";
 import { Input } from "@/components/ui/input";
@@ -24,7 +24,7 @@ interface Props {
 export function ChatRoom({ conv, currentUserId, initialMessages }: Props) {
   const messages = useRealtimeChat(conv.id, initialMessages);
   const [text, setText] = useState("");
-  const [pending, start] = useTransition();
+  const [sending, setSending] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const other = conv.buyer.id === currentUserId ? conv.seller : conv.buyer;
 
@@ -35,16 +35,18 @@ export function ChatRoom({ conv, currentUserId, initialMessages }: Props) {
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     const content = text.trim();
-    if (!content) return;
-    setText("");
+    if (!content || sending) return;
 
-    start(async () => {
-      const res = await sendMessage(conv.id, content);
-      if (res && "error" in res) {
-        toast.error(res.error);
-        setText(content); // restore text on error
-      }
-    });
+    setText("");
+    setSending(true);
+
+    const res = await sendMessage(conv.id, content);
+    setSending(false);
+
+    if (res && "error" in res) {
+      toast.error(res.error);
+      setText(content);
+    }
   };
 
   return (
@@ -56,9 +58,7 @@ export function ChatRoom({ conv, currentUserId, initialMessages }: Props) {
 
       <div ref={scrollRef} className="flex-1 overflow-y-auto px-4 py-4 space-y-2 bg-slate-50">
         {messages.length === 0 && (
-          <p className="text-center text-sm text-slate-400 mt-8">
-            No messages yet. Say hi!
-          </p>
+          <p className="text-center text-sm text-slate-400 mt-8">No messages yet. Say hi!</p>
         )}
         {messages.map((m) => (
           <div
@@ -91,7 +91,7 @@ export function ChatRoom({ conv, currentUserId, initialMessages }: Props) {
             }
           }}
         />
-        <Button type="submit" disabled={pending || !text.trim()}>
+        <Button type="submit" disabled={sending || !text.trim()}>
           <Send className="h-4 w-4" />
         </Button>
       </form>

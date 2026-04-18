@@ -18,6 +18,16 @@ export async function createProduct(input: unknown) {
   } = await supabase.auth.getUser();
   if (!user) return { ok: false as const, error: "Not authenticated" };
 
+  // Ensure profile row exists (may be missing if email verify was skipped)
+  await supabase.from("profiles").upsert(
+    {
+      id: user.id,
+      email: user.email!,
+      full_name: user.user_metadata?.full_name ?? null,
+    },
+    { onConflict: "id" }
+  );
+
   const { data: profile } = await supabase
     .from("profiles")
     .select("university_id")

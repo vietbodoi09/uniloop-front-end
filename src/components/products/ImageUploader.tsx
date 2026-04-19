@@ -86,9 +86,7 @@ export function ImageUploader({ value, onChange, max = 8 }: Props) {
     }
   };
 
-  const remove = async (path: string) => {
-    const supabase = createClient();
-    await supabase.storage.from("product-images").remove([path]);
+  const remove = (path: string) => {
     onChange(value.filter((p) => p !== path));
   };
 

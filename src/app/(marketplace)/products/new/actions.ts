@@ -1,7 +1,6 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { productFullSchema } from "@/lib/validators/product";
 
@@ -18,7 +17,6 @@ export async function createProduct(input: unknown) {
   } = await supabase.auth.getUser();
   if (!user) return { ok: false as const, error: "Not authenticated" };
 
-  // Ensure profile row exists (may be missing if email verify was skipped)
   await supabase.from("profiles").upsert(
     {
       id: user.id,
@@ -55,5 +53,5 @@ export async function createProduct(input: unknown) {
   if (error) return { ok: false as const, error: error.message };
 
   revalidatePath("/");
-  redirect(`/products/${data.id}`);
+  return { ok: true as const, id: data.id };
 }

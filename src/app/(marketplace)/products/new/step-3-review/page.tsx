@@ -36,13 +36,15 @@ export default function Step3() {
   const publish = () => {
     startTransition(async () => {
       const result = await createProduct(draft);
-      if (result && !result.ok) {
+      if (!result.ok) {
         toast.error(
           typeof result.error === "string" ? result.error : "Validation failed"
         );
         return;
       }
       reset();
+      toast.success("Đăng bài thành công!");
+      router.push(`/products/${result.id}`);
     });
   };
 

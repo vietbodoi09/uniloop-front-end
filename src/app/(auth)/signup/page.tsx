@@ -48,21 +48,24 @@ export default function SignupPage() {
   };
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Create your UniLoop account</CardTitle>
+    <Card className="border-border/60 shadow-xl shadow-indigo-500/5 backdrop-blur bg-white/80">
+      <CardHeader className="space-y-1">
+        <CardTitle className="text-2xl font-bold text-center">Tạo tài khoản</CardTitle>
+        <p className="text-sm text-muted-foreground text-center">
+          Tham gia cộng đồng UEB và bắt đầu giao dịch
+        </p>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div className="space-y-1.5">
-            <Label htmlFor="fullName">Full name</Label>
-            <Input id="fullName" {...register("fullName")} />
+            <Label htmlFor="fullName">Họ và tên</Label>
+            <Input id="fullName" placeholder="Nguyễn Văn A" {...register("fullName")} />
             {errors.fullName && (
               <p className="text-sm text-red-600">{errors.fullName.message}</p>
             )}
           </div>
           <div className="space-y-1.5">
-            <Label htmlFor="email">University email</Label>
+            <Label htmlFor="email">Email</Label>
             <Input
               id="email"
               type="email"
@@ -74,26 +77,30 @@ export default function SignupPage() {
             )}
           </div>
           <div className="space-y-1.5">
-            <Label htmlFor="password">Password</Label>
+            <Label htmlFor="password">Mật khẩu</Label>
             <Input id="password" type="password" {...register("password")} />
             {errors.password && (
               <p className="text-sm text-red-600">{errors.password.message}</p>
             )}
           </div>
           <div className="space-y-1.5">
-            <Label htmlFor="confirm">Confirm password</Label>
+            <Label htmlFor="confirm">Xác nhận mật khẩu</Label>
             <Input id="confirm" type="password" {...register("confirm")} />
             {errors.confirm && (
               <p className="text-sm text-red-600">{errors.confirm.message}</p>
             )}
           </div>
-          <Button type="submit" className="w-full" disabled={loading}>
-            {loading ? "Creating account…" : "Sign up"}
+          <Button
+            type="submit"
+            className="w-full rounded-full bg-brand-gradient text-white border-0 shadow-md shadow-indigo-500/20 hover:opacity-90"
+            disabled={loading}
+          >
+            {loading ? "Đang tạo tài khoản…" : "Đăng ký"}
           </Button>
-          <p className="text-center text-sm text-slate-600">
-            Already have an account?{" "}
-            <Link href="/login" className="font-medium underline">
-              Log in
+          <p className="text-center text-sm text-muted-foreground">
+            Đã có tài khoản?{" "}
+            <Link href="/login" className="font-semibold text-indigo-600 hover:underline">
+              Đăng nhập
             </Link>
           </p>
         </form>

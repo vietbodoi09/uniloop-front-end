@@ -4,48 +4,52 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
+  --background: oklch(0.99 0.005 250);
+  --foreground: oklch(0.15 0.04 260);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
+  --card-foreground: oklch(0.15 0.04 260);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
-  --radius: 0.625rem;
+  --popover-foreground: oklch(0.15 0.04 260);
+  --primary: oklch(0.45 0.18 275);
+  --primary-foreground: oklch(0.99 0.003 250);
+  --secondary: oklch(0.96 0.01 255);
+  --secondary-foreground: oklch(0.2 0.04 265);
+  --muted: oklch(0.96 0.01 255);
+  --muted-foreground: oklch(0.5 0.04 260);
+  --accent: oklch(0.94 0.03 280);
+  --accent-foreground: oklch(0.25 0.1 275);
+  --destructive: oklch(0.58 0.24 27);
+  --destructive-foreground: oklch(0.99 0.003 250);
+  --border: oklch(0.92 0.015 260);
+  --input: oklch(0.94 0.012 260);
+  --ring: oklch(0.55 0.15 275);
+  --radius: 0.75rem;
+
+  --brand-from: oklch(0.6 0.22 290);
+  --brand-via: oklch(0.55 0.2 275);
+  --brand-to: oklch(0.55 0.18 230);
 }
 
 .dark {
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.208 0.042 265.755);
-  --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --background: oklch(0.13 0.04 265);
+  --foreground: oklch(0.98 0.003 248);
+  --card: oklch(0.18 0.04 266);
+  --card-foreground: oklch(0.98 0.003 248);
+  --popover: oklch(0.18 0.04 266);
+  --popover-foreground: oklch(0.98 0.003 248);
+  --primary: oklch(0.7 0.18 280);
+  --primary-foreground: oklch(0.15 0.04 266);
+  --secondary: oklch(0.25 0.04 260);
+  --secondary-foreground: oklch(0.98 0.003 248);
+  --muted: oklch(0.25 0.04 260);
+  --muted-foreground: oklch(0.7 0.04 257);
+  --accent: oklch(0.28 0.06 280);
+  --accent-foreground: oklch(0.98 0.003 248);
+  --destructive: oklch(0.7 0.19 22);
+  --destructive-foreground: oklch(0.98 0.003 248);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
+  --ring: oklch(0.55 0.15 275);
 }
 
 @theme inline {
@@ -78,9 +82,98 @@
   * {
     border-color: var(--border);
   }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     background: var(--background);
     color: var(--foreground);
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    font-family: var(--font-inter), system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: oklch(0.85 0.02 260);
+    border-radius: 8px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: oklch(0.7 0.04 265);
+    background-clip: padding-box;
+    border: 2px solid transparent;
+  }
+}
+
+@layer utilities {
+  .bg-brand-gradient {
+    background-image: linear-gradient(
+      135deg,
+      var(--brand-from) 0%,
+      var(--brand-via) 50%,
+      var(--brand-to) 100%
+    );
+  }
+  .text-brand-gradient {
+    background-image: linear-gradient(
+      135deg,
+      var(--brand-from) 0%,
+      var(--brand-via) 50%,
+      var(--brand-to) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .bg-mesh {
+    background-color: oklch(0.99 0.005 250);
+    background-image:
+      radial-gradient(at 10% 0%, oklch(0.9 0.08 280 / 0.4) 0px, transparent 50%),
+      radial-gradient(at 90% 10%, oklch(0.9 0.07 220 / 0.35) 0px, transparent 50%),
+      radial-gradient(at 50% 100%, oklch(0.92 0.06 310 / 0.3) 0px, transparent 50%);
+  }
+  .glass {
+    background: color-mix(in oklch, var(--background) 70%, transparent);
+    backdrop-filter: saturate(180%) blur(14px);
+    -webkit-backdrop-filter: saturate(180%) blur(14px);
+  }
+  .card-hover {
+    transition: transform 280ms cubic-bezier(0.2, 0.8, 0.2, 1),
+      box-shadow 280ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow:
+      0 10px 30px -12px oklch(0.3 0.1 275 / 0.18),
+      0 4px 10px -4px oklch(0.3 0.1 275 / 0.1);
+  }
+  @keyframes shimmer {
+    0% { background-position: -400px 0; }
+    100% { background-position: 400px 0; }
+  }
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      oklch(0.95 0.01 260) 0%,
+      oklch(0.98 0.005 260) 50%,
+      oklch(0.95 0.01 260) 100%
+    );
+    background-size: 800px 100%;
+    animation: shimmer 2s infinite linear;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+  }
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
   }
 }

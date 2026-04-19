@@ -59,24 +59,27 @@ function LoginInner() {
   };
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Welcome back</CardTitle>
+    <Card className="border-border/60 shadow-xl shadow-indigo-500/5 backdrop-blur bg-white/80">
+      <CardHeader className="space-y-1">
+        <CardTitle className="text-2xl font-bold text-center">Chào mừng trở lại</CardTitle>
+        <p className="text-sm text-muted-foreground text-center">
+          Đăng nhập để tiếp tục giao dịch
+        </p>
       </CardHeader>
       <CardContent>
         <Tabs defaultValue="password">
-          <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="password">Password</TabsTrigger>
-            <TabsTrigger value="magic">Magic link</TabsTrigger>
+          <TabsList className="grid w-full grid-cols-2 rounded-full">
+            <TabsTrigger value="password" className="rounded-full">Mật khẩu</TabsTrigger>
+            <TabsTrigger value="magic" className="rounded-full">Magic link</TabsTrigger>
           </TabsList>
 
           <TabsContent value="password">
             <form
               onSubmit={pwForm.handleSubmit(onPassword)}
-              className="space-y-4 pt-4"
+              className="space-y-4 pt-5"
             >
               <div className="space-y-1.5">
-                <Label>University email</Label>
+                <Label>Email</Label>
                 <Input
                   type="email"
                   placeholder="example@gmail.com"
@@ -89,11 +92,11 @@ function LoginInner() {
                 )}
               </div>
               <div className="space-y-1.5">
-                <Label>Password</Label>
+                <Label>Mật khẩu</Label>
                 <Input type="password" {...pwForm.register("password")} />
               </div>
-              <Button className="w-full" disabled={loading}>
-                Log in
+              <Button className="w-full rounded-full bg-brand-gradient text-white border-0 shadow-md shadow-indigo-500/20 hover:opacity-90" disabled={loading}>
+                {loading ? "Đang đăng nhập…" : "Đăng nhập"}
               </Button>
             </form>
           </TabsContent>
@@ -101,10 +104,10 @@ function LoginInner() {
           <TabsContent value="magic">
             <form
               onSubmit={mlForm.handleSubmit(onMagic)}
-              className="space-y-4 pt-4"
+              className="space-y-4 pt-5"
             >
               <div className="space-y-1.5">
-                <Label>University email</Label>
+                <Label>Email</Label>
                 <Input
                   type="email"
                   placeholder="example@gmail.com"
@@ -116,17 +119,17 @@ function LoginInner() {
                   </p>
                 )}
               </div>
-              <Button className="w-full" disabled={loading}>
-                Send magic link
+              <Button className="w-full rounded-full bg-brand-gradient text-white border-0 shadow-md shadow-indigo-500/20 hover:opacity-90" disabled={loading}>
+                {loading ? "Đang gửi…" : "Gửi magic link"}
               </Button>
             </form>
           </TabsContent>
         </Tabs>
 
-        <p className="mt-6 text-center text-sm text-slate-600">
-          New here?{" "}
-          <Link href="/signup" className="font-medium underline">
-            Create an account
+        <p className="mt-6 text-center text-sm text-muted-foreground">
+          Chưa có tài khoản?{" "}
+          <Link href="/signup" className="font-semibold text-indigo-600 hover:underline">
+            Đăng ký ngay
           </Link>
         </p>
       </CardContent>

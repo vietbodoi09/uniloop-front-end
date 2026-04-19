@@ -1,7 +1,14 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Toaster } from "@/components/ui/sonner";
+
+const inter = Inter({
+  subsets: ["latin", "vietnamese"],
+  variable: "--font-inter",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "UniLoop — Student marketplace",
@@ -15,10 +22,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full antialiased">
-      <body className="min-h-full flex flex-col">
+    <html lang="en" className={`h-full antialiased ${inter.variable}`}>
+      <body className="min-h-full flex flex-col bg-mesh">
         <Navbar />
         <main className="flex-1">{children}</main>
+        <footer className="mt-16 border-t bg-white/50">
+          <div className="mx-auto max-w-7xl px-4 py-8 text-sm text-muted-foreground flex flex-col sm:flex-row items-center justify-between gap-2">
+            <p>
+              <span className="font-semibold text-brand-gradient">UniLoop</span>
+              {" "}— Sàn giao dịch dành cho sinh viên UEB
+            </p>
+            <p className="text-xs">© {new Date().getFullYear()} UniLoop. Made with care.</p>
+          </div>
+        </footer>
         <Toaster richColors position="top-right" />
       </body>
     </html>

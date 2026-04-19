@@ -36,7 +36,7 @@ export default async function ProductDetail({
     `
     )
     .eq("id", id)
-    .single();
+    .maybeSingle();
 
   if (!product) notFound();
 

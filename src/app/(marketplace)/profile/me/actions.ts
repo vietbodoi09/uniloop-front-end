@@ -16,6 +16,7 @@ export async function deleteProduct(productId: string) {
   if (error) return { error: error.message };
   revalidatePath("/profile/me");
   revalidatePath("/");
+  revalidatePath(`/products/${productId}`);
   return { ok: true };
 }
 
@@ -33,6 +34,7 @@ export async function markAsSold(productId: string) {
   if (error) return { error: error.message };
   revalidatePath("/profile/me");
   revalidatePath("/");
+  revalidatePath(`/products/${productId}`);
   return { ok: true };
 }
 
@@ -50,5 +52,6 @@ export async function markAsActive(productId: string) {
   if (error) return { error: error.message };
   revalidatePath("/profile/me");
   revalidatePath("/");
+  revalidatePath(`/products/${productId}`);
   return { ok: true };
 }

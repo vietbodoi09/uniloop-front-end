@@ -27,7 +27,7 @@ export default async function ConversationPage({
     `
     )
     .eq("id", conversationId)
-    .single();
+    .maybeSingle();
 
   if (!conv) notFound();
   if (conv.buyer_id !== user.id && conv.seller_id !== user.id) notFound();

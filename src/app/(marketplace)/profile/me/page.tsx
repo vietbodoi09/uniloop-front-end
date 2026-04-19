@@ -17,7 +17,7 @@ export default async function MyProfilePage() {
     .from("profiles")
     .select("*")
     .eq("id", user.id)
-    .single();
+    .maybeSingle();
 
   const { data: products } = await supabase
     .from("products")

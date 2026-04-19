@@ -30,7 +30,7 @@ export async function createProduct(input: unknown) {
     .from("profiles")
     .select("university_id")
     .eq("id", user.id)
-    .single();
+    .maybeSingle();
 
   const { data, error } = await supabase
     .from("products")

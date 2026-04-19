@@ -15,7 +15,7 @@ export async function openConversation(productId: string) {
     .from("products")
     .select("seller_id")
     .eq("id", productId)
-    .single();
+    .maybeSingle();
 
   if (!product || product.seller_id === user.id) {
     return { error: "Invalid conversation target" };

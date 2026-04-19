@@ -48,11 +48,11 @@ export default function SignupPage() {
   };
 
   return (
-    <Card className="border-border/60 shadow-xl shadow-indigo-500/5 backdrop-blur bg-white/80">
+    <Card className="border-border/60 shadow-xl shadow-red-500/5 backdrop-blur bg-white/80">
       <CardHeader className="space-y-1">
         <CardTitle className="text-2xl font-bold text-center">Tạo tài khoản</CardTitle>
         <p className="text-sm text-muted-foreground text-center">
-          Tham gia cộng đồng UEB và bắt đầu giao dịch
+          Tham gia cộng đồng sinh viên Việt Nam
         </p>
       </CardHeader>
       <CardContent>
@@ -92,14 +92,14 @@ export default function SignupPage() {
           </div>
           <Button
             type="submit"
-            className="w-full rounded-full bg-brand-gradient text-white border-0 shadow-md shadow-indigo-500/20 hover:opacity-90"
+            className="w-full rounded-full bg-brand-gradient text-white border-0 shadow-md shadow-red-500/20 hover:opacity-90"
             disabled={loading}
           >
             {loading ? "Đang tạo tài khoản…" : "Đăng ký"}
           </Button>
           <p className="text-center text-sm text-muted-foreground">
             Đã có tài khoản?{" "}
-            <Link href="/login" className="font-semibold text-indigo-600 hover:underline">
+            <Link href="/login" className="font-semibold text-red-700 hover:underline">
               Đăng nhập
             </Link>
           </p>

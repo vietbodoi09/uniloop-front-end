@@ -22,29 +22,29 @@ function Hero() {
   return (
     <section className="relative overflow-hidden">
       <div className="absolute inset-0 -z-10">
-        <div className="absolute -top-24 -left-24 h-96 w-96 rounded-full bg-indigo-300/40 blur-3xl animate-float" />
+        <div className="absolute -top-24 -left-24 h-96 w-96 rounded-full bg-red-300/40 blur-3xl animate-float" />
         <div
-          className="absolute top-10 right-0 h-96 w-96 rounded-full bg-violet-300/40 blur-3xl animate-float"
+          className="absolute top-10 right-0 h-96 w-96 rounded-full bg-amber-300/40 blur-3xl animate-float"
           style={{ animationDelay: "2s" }}
         />
         <div
-          className="absolute -bottom-20 left-1/3 h-80 w-80 rounded-full bg-sky-300/30 blur-3xl animate-float"
+          className="absolute -bottom-20 left-1/3 h-80 w-80 rounded-full bg-orange-300/30 blur-3xl animate-float"
           style={{ animationDelay: "4s" }}
         />
       </div>
 
       <div className="mx-auto max-w-7xl px-4 pt-14 pb-10 text-center">
-        <div className="inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-white/70 px-3 py-1 text-xs font-medium text-indigo-700 backdrop-blur">
+        <div className="inline-flex items-center gap-2 rounded-full border border-red-200 bg-white/70 px-3 py-1 text-xs font-medium text-red-700 backdrop-blur">
           <Sparkles className="h-3.5 w-3.5" />
-          Dành riêng cho sinh viên UEB
+          Dành cho sinh viên toàn quốc
         </div>
         <h1 className="mt-5 text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.05]">
-          Mua — Bán — Trao đổi
+          UniLoop
           <br />
-          <span className="text-brand-gradient">mọi thứ trong ký túc</span>
+          <span className="text-brand-gradient">kết nối hôm nay cho ngày mai</span>
         </h1>
         <p className="mt-4 mx-auto max-w-xl text-base sm:text-lg text-muted-foreground">
-          Sàn giao dịch đáng tin cậy cho sinh viên UEB: sách, đồ dùng, thiết bị —
+          Sàn giao dịch đáng tin cậy cho sinh viên Việt Nam: sách, đồ dùng, thiết bị —
           tất cả chỉ cách bạn vài bước chân.
         </p>
       </div>
@@ -63,7 +63,7 @@ function FeatureCard({
 }) {
   return (
     <div className="group rounded-2xl bg-white/70 backdrop-blur border border-border/60 p-5 card-hover">
-      <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-gradient text-white shadow-md shadow-indigo-500/20">
+      <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-gradient text-white shadow-md shadow-red-500/20">
         {icon}
       </div>
       <h3 className="mt-4 font-semibold">{title}</h3>
@@ -100,7 +100,7 @@ export default async function Home() {
             <Button
               asChild
               size="lg"
-              className="rounded-full bg-brand-gradient border-0 text-white shadow-lg shadow-indigo-500/25 hover:opacity-90"
+              className="rounded-full bg-brand-gradient border-0 text-white shadow-lg shadow-red-500/25 hover:opacity-90"
             >
               <Link href="/signup">
                 Bắt đầu ngay
@@ -136,16 +136,16 @@ export default async function Home() {
       <div className="mx-auto max-w-7xl px-4 pb-16">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-10">
           <div className="flex items-center gap-3 rounded-2xl bg-white/70 backdrop-blur border border-border/60 p-4">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-100 text-emerald-700">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-red-100 text-red-700">
               <ShieldCheck className="h-5 w-5" />
             </div>
             <div>
               <p className="text-sm font-semibold">Giao dịch an toàn</p>
-              <p className="text-xs text-muted-foreground">Chỉ giữa sinh viên UEB</p>
+              <p className="text-xs text-muted-foreground">Cộng đồng sinh viên xác thực</p>
             </div>
           </div>
           <div className="flex items-center gap-3 rounded-2xl bg-white/70 backdrop-blur border border-border/60 p-4">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-violet-100 text-violet-700">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-100 text-amber-700">
               <Zap className="h-5 w-5" />
             </div>
             <div>
@@ -154,7 +154,7 @@ export default async function Home() {
             </div>
           </div>
           <div className="flex items-center gap-3 rounded-2xl bg-white/70 backdrop-blur border border-border/60 p-4">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-sky-100 text-sky-700">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-orange-100 text-orange-700">
               <MapPin className="h-5 w-5" />
             </div>
             <div>
@@ -175,7 +175,7 @@ export default async function Home() {
           </div>
           <Button
             asChild
-            className="rounded-full bg-brand-gradient text-white border-0 shadow-md shadow-indigo-500/20 hover:opacity-90"
+            className="rounded-full bg-brand-gradient text-white border-0 shadow-md shadow-red-500/20 hover:opacity-90"
           >
             <Link href="/products/new/step-1-details">
               <Sparkles className="h-4 w-4 mr-1" />

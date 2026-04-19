@@ -1,4 +1,6 @@
+"use client";
 import Link from "next/link";
+import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { ImageIcon, MapPin, Repeat } from "lucide-react";
 
@@ -19,37 +21,45 @@ const publicUrl = (path: string) =>
 export function ProductCard({ product }: Props) {
   const cover = product.images?.[0] ? publicUrl(product.images[0]) : null;
   const isExchange = product.listing_type === "exchange";
+  const [errored, setErrored] = useState(false);
+  const showImage = cover && !errored;
 
   return (
     <Link
       href={`/products/${product.id}`}
       className="group card-hover block rounded-xl bg-card border border-border/60 overflow-hidden"
     >
-      <div className="relative aspect-square overflow-hidden bg-gradient-to-br from-slate-100 via-slate-50 to-indigo-50">
-        {cover ? (
+      <div className="relative aspect-square overflow-hidden bg-gradient-to-br from-red-50 via-amber-50 to-yellow-50">
+        {showImage ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={cover}
             alt={product.title}
             loading="lazy"
+            onError={() => setErrored(true)}
             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
           />
         ) : (
-          <div className="absolute inset-0 flex items-center justify-center">
-            <ImageIcon className="h-10 w-10 text-slate-300" />
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-center px-3">
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/70 backdrop-blur shadow-sm">
+              <ImageIcon className="h-6 w-6 text-amber-700/60" />
+            </div>
+            <p className="text-[11px] text-amber-900/60 line-clamp-2 font-medium">
+              {product.title}
+            </p>
           </div>
         )}
 
         <div className="absolute top-2 left-2 flex gap-1.5">
           {isExchange && (
-            <span className="inline-flex items-center gap-1 rounded-full bg-white/90 backdrop-blur px-2 py-0.5 text-[10px] font-semibold text-indigo-700 shadow-sm">
+            <span className="inline-flex items-center gap-1 rounded-full bg-white/90 backdrop-blur px-2 py-0.5 text-[10px] font-semibold text-red-700 shadow-sm">
               <Repeat className="h-3 w-3" />
               Trao đổi
             </span>
           )}
         </div>
 
-        <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition" />
+        <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition" />
       </div>
 
       <div className="p-3 space-y-1.5">
@@ -59,7 +69,10 @@ export function ProductCard({ product }: Props) {
         <div className="flex items-end justify-between gap-2 pt-1">
           <span className="text-base font-bold text-brand-gradient leading-none">
             {isExchange ? (
-              <Badge variant="outline" className="border-indigo-200 text-indigo-700 bg-indigo-50/60 font-semibold">
+              <Badge
+                variant="outline"
+                className="border-red-200 text-red-700 bg-red-50/60 font-semibold"
+              >
                 Exchange
               </Badge>
             ) : (

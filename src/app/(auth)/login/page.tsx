@@ -59,7 +59,7 @@ function LoginInner() {
   };
 
   return (
-    <Card className="border-border/60 shadow-xl shadow-indigo-500/5 backdrop-blur bg-white/80">
+    <Card className="border-border/60 shadow-xl shadow-red-500/5 backdrop-blur bg-white/80">
       <CardHeader className="space-y-1">
         <CardTitle className="text-2xl font-bold text-center">Chào mừng trở lại</CardTitle>
         <p className="text-sm text-muted-foreground text-center">
@@ -95,7 +95,7 @@ function LoginInner() {
                 <Label>Mật khẩu</Label>
                 <Input type="password" {...pwForm.register("password")} />
               </div>
-              <Button className="w-full rounded-full bg-brand-gradient text-white border-0 shadow-md shadow-indigo-500/20 hover:opacity-90" disabled={loading}>
+              <Button className="w-full rounded-full bg-brand-gradient text-white border-0 shadow-md shadow-red-500/20 hover:opacity-90" disabled={loading}>
                 {loading ? "Đang đăng nhập…" : "Đăng nhập"}
               </Button>
             </form>
@@ -119,7 +119,7 @@ function LoginInner() {
                   </p>
                 )}
               </div>
-              <Button className="w-full rounded-full bg-brand-gradient text-white border-0 shadow-md shadow-indigo-500/20 hover:opacity-90" disabled={loading}>
+              <Button className="w-full rounded-full bg-brand-gradient text-white border-0 shadow-md shadow-red-500/20 hover:opacity-90" disabled={loading}>
                 {loading ? "Đang gửi…" : "Gửi magic link"}
               </Button>
             </form>
@@ -128,7 +128,7 @@ function LoginInner() {
 
         <p className="mt-6 text-center text-sm text-muted-foreground">
           Chưa có tài khoản?{" "}
-          <Link href="/signup" className="font-semibold text-indigo-600 hover:underline">
+          <Link href="/signup" className="font-semibold text-red-700 hover:underline">
             Đăng ký ngay
           </Link>
         </p>

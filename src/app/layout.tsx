@@ -23,7 +23,7 @@ export default function RootLayout({
           <div className="mx-auto max-w-7xl px-4 py-8 text-sm text-muted-foreground flex flex-col sm:flex-row items-center justify-between gap-2">
             <p>
               <span className="font-semibold text-brand-gradient">UniLoop</span>
-              {" "}— Sàn giao dịch dành cho sinh viên UEB
+              {" "}— Kết nối hôm nay cho ngày mai
             </p>
             <p className="text-xs">© {new Date().getFullYear()} UniLoop. Made with care.</p>
           </div>

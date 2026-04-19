@@ -16,7 +16,7 @@ export function Navbar() {
     <header className="sticky top-0 z-40 glass border-b border-border/60">
       <div className="mx-auto flex max-w-7xl items-center gap-3 px-4 h-16">
         <Link href="/" className="flex items-center gap-2 shrink-0">
-          <span className="relative flex h-8 w-8 items-center justify-center rounded-lg bg-brand-gradient text-white font-bold shadow-lg shadow-indigo-500/20">
+          <span className="relative flex h-8 w-8 items-center justify-center rounded-lg bg-brand-gradient text-white font-bold shadow-lg shadow-red-500/20">
             U
           </span>
           <span className="hidden sm:inline text-lg font-bold tracking-tight text-brand-gradient">
@@ -42,7 +42,7 @@ export function Navbar() {
 
         {user ? (
           <div className="flex items-center gap-1">
-            <Button asChild size="sm" className="rounded-full bg-brand-gradient hover:opacity-90 text-white shadow-md shadow-indigo-500/20 border-0">
+            <Button asChild size="sm" className="rounded-full bg-brand-gradient hover:opacity-90 text-white shadow-md shadow-red-500/20 border-0">
               <Link href="/products/new/step-1-details">
                 <Plus className="h-4 w-4 mr-1" />
                 <span className="hidden sm:inline">Đăng bài</span>
@@ -77,7 +77,7 @@ export function Navbar() {
             <Button asChild variant="ghost" size="sm" className="rounded-full">
               <Link href="/login">Đăng nhập</Link>
             </Button>
-            <Button asChild size="sm" className="rounded-full bg-brand-gradient hover:opacity-90 text-white border-0 shadow-md shadow-indigo-500/20">
+            <Button asChild size="sm" className="rounded-full bg-brand-gradient hover:opacity-90 text-white border-0 shadow-md shadow-red-500/20">
               <Link href="/signup">Đăng ký</Link>
             </Button>
           </div>
